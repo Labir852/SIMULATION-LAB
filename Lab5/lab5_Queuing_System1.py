@@ -1,6 +1,6 @@
 import random
 
-customer = int(input("how many customers to take: "))
+#customer = int(input("how many customers to take: "))
 MDT = float(input("Enter the Mean Deviation value for Time Between Arrival: "))
 SDT = float(input("Enter the standard Deviation value for Time Between Arrival: "))
 MDS =  float(input("Enter the Mean Deviation value for Service: "))
@@ -8,15 +8,15 @@ SDS = float(input("Enter the standard Deviation value For Service: "))
 
 
 
-TimeBetArrivals = []
-for i in range(0,customer):    
-    n = round(random.uniform(-3, 3), 3)
-    TimeBetArrivals.append(n)
+TimeBetArrivals = [-0.46, -1.15, 0.15, 0.81, 0.74, -0.39, 0.45, 2.44, 0.59, -0.06, 0.09, 0.56, 0.65, 3.10, -0.44]
+# for i in range(0,customer):    
+#     n = round(random.uniform(-3, 3), 3)
+#     TimeBetArrivals.append(n)
 
-ServiceTime = []
-for i in range(0,customer):    
-    n = round(random.uniform(-3,3), 3)
-    ServiceTime.append(n)
+ServiceTime = [0.59, -0.67, 0.41, 0.51, 1.53, -0.37, -0.27, -0.15, -0.02, -1.60, -0.19, 0.16, -0.07, 0.24, -1.76]
+# for i in range(0,customer):    
+#     n = round(random.uniform(-3,3), 3)
+#     ServiceTime.append(n)
 
 IAT=[]
 CAT=[]
@@ -25,7 +25,7 @@ ST = []
 SE = []
 WT = []
 IT = []
-for i in range(0,customer):
+for i in range(0,15):
     iat = round((MDT+SDT*TimeBetArrivals[i]),3)
     IAT.append(iat)
     st = round((MDS + SDS*ServiceTime[i]),3)
@@ -73,7 +73,7 @@ print("Total Time Elapsed: ",CAT[-1], " mins")
 print("Total Customer waiting time: ",round(sumWT,3), " mins")
 print("Total Server Idle time: ",round(sumIT,3)," mins")
 
-AWT = round((sumWT/customer),3)
+AWT = round((sumWT/15),3)
 
 print ("Average Waiting Time : ", AWT, " per arrival.")
 PCU = round((((SE[-1]-sumIT)/SE[-1])*100),2)
